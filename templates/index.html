@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Cancer Lesion Classifier</title>
+  
+  <style>
+    body {
+      background: #000;
+      font-family: Arial, sans-serif;
+    }
+    h2, h4, p {
+      color: Green;
+    }
+    h2 {
+      font-size: 5vw; /* responsive size based on viewport width */
+    }
+    h4 {
+      font-size: 3vw; /* responsive size based on viewport width */
+    }
+    p {
+      font-size: 2.5vw; /* responsive size based on viewport width */
+    }
+    input[type="file"] {
+      font-size: 2.5vw; /* responsive size based on viewport width */
+    }
+    input[type="submit"] {
+      font-size: 2.5vw; /* responsive size based on viewport width */
+      padding: 1vw; /* responsive padding */
+    }
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 6vw; /* larger font for smaller screens */
+      }
+      h4 {
+        font-size: 4vw; /* larger font for smaller screens */
+      }
+      p {
+        font-size: 3vw; /* larger font for smaller screens */
+      }
+      input[type="file"] {
+        font-size: 3vw; /* larger font for smaller screens */
+      }
+      input[type="submit"] {
+        font-size: 3vw; /* larger font for smaller screens */
+        padding: 2vw; /* larger padding for smaller screens */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <h2>Skin Cancer Lesion Classifier</h2>
+    <h4>Upload an image and click submit</h4>
+
+    <form method="post" action="/" enctype="multipart/form-data">
+      <dl>
+        <p>
+          <input type="file" name="file" autocomplete="off" required>
+        </p>
+      </dl>
+      <p>
+        <input type="submit" name="submit" value="Submit">
+      </p>
+    </form>
+
+    <p>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          Diagnosis for the following image is: <u><h3 style="color:MediumSeaGreen;">{{ messages[0] }}</h3></u><br>
+          <img src="{{ messages[1] }}" width="300" height="225">
+        {% endif %}
+      {% endwith %}
+    </p>
+  </center>
+</body>
+</html>
